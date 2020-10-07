@@ -1,0 +1,63 @@
+body {
+    font-family: 'Lora';
+    background-image: linear-gradient(rgba(100, 100, 100, 0.99), rgba(0, 0, 0, 0.1)), url("../img/bg.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#mainNav {
+    background-color: rgba(98, 148, 184, 1);
+    font-family: 'Raleway';
+}
+#mainNav .navbar-brand {
+    color: white;
+}
+
+#mainNav .navbar-nav .nav-item.active .nav-link {
+    color: white;
+}
+@media (min-width: 992px) {
+    #mainNav .navbar-nav .nav-item .nav-link {
+        font-size: 0.9rem;
+    }
+    #mainNav .navbar-nav .nav-item .nav-link:hover {
+        color: rgba(255, 255, 255, 0.4);
+    }
+    #mainNav .navbar-nav .nav-item.active .nav-link:hover {
+        color: #cce5ff;
+    }
+}
+
+.cta {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: rgba(98, 148, 184, 1);
+}
+
+.list-hours .list-hours-item.today {
+    font-weight: bold;
+    color: #b3d7ff;
+}
+
+.footer {
+    background-color: rgba(77, 140, 180, 1);
+}
+
+.text-primary {
+    color: white !important;
+}
+
+.bg-primary {
+    background-color: #b3d7ff !important;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #0062cc;
+    border-color: #0062cc;
+}
