@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<div th:replace="fragments/navbar :: navbar"/>
+
+<section class="page-section about-heading">
+    <div class="container">
+        <div class="about-heading-content">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <br/>
+                    <div class="bg-faded rounded p-5">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">새로운 고객, 언제나 환영입니다.</span>
+                            <span class="section-heading-lower">회원 가입</span>
+                        </h2>
+                        <form th:action="@{/items/new}" th:object="${form}" method="post">
+
+                            <div class="form-group">
+                                <label th:for="name">상품명</label>
+                                <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력하세요">
+                            </div>
+
+                            <div class="form-group">
+                                <label th:for="price">가격</label>
+                                <input type="number" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요">
+                            </div>
+
+                            <div class="form-group">
+                                <label th:for="stockQuantity">수량</label>
+                                <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="수량을 입력하세요">
+                            </div>
+
+                            <div class="form-group">
+                                <label th:for="kinds">종류</label>
+                                <input type="text" th:field="*{kinds}" class="form-control" placeholder="종를 입력하세요">
+                            </div>류
+
+                            <div class="form-group">
+                                <label th:for="area">area</label>
+                                <input type="text" th:field="*{area}" class="form-control" placeholder="제조국을 입력하세요">
+                            </div>
+
+                            <button type="submit" class="btn btn-info">등록</button>
+                        </form>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"/>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
