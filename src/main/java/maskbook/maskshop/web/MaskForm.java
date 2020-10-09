@@ -17,6 +17,7 @@ public class MaskForm {
     private int stockQuantity;
 
     private String kinds; // kf-ad, kf-80, kf-94, normal
-    
-    private String area; // [KOREA, CHINA]
+
+    @Enumerated(EnumType.STRING)
+    private ItemArea area; // [KOREA, CHINA]
 }

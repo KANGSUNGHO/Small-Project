@@ -18,10 +18,11 @@
                     <br/>
                     <div class="bg-faded rounded p-5">
                         <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">관리자님, 상품을 등록해주세요.</span>
-                            <span class="section-heading-lower">상품 등록</span>
+                            <span class="section-heading-upper">관리자님, 상품을 수정해주세요.</span>
+                            <span class="section-heading-lower">상품 수정</span>
                         </h2>
-                        <form th:action="@{/items/new}" th:object="${form}" method="post">
+                        <form th:object="${form}" method="post">
+                            <input type="hidden" th:field="*{id}" />
 
                             <div class="form-group">
                                 <label th:for="name">상품명</label>
@@ -53,8 +54,7 @@
                                 </select>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-info">등록</button>
-                                <button type="button" onclick="location.href='/items'" class="btn btn-info">상품조회</button>
+                                <button type="submit" class="btn btn-info">수정</button>
                             </div>
                         </form>
                         <br/>

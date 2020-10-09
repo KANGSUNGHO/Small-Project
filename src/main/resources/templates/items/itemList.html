@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<div th:replace="fragments/navbar :: navbar"/>
+
+<section class="page-section about-heading">
+    <div class="container">
+        <div class="about-heading-content">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <br/>
+                    <div class="bg-faded rounded p-5">
+                        <br/>
+                        <div>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>상품명</th>
+                                    <th>가격</th>
+                                    <th>재고수량</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="item : ${items}">
+                                    <td th:text="${item.itemId}"></td>
+                                    <td th:text="${item.itemName}"></td>
+                                    <td th:text="${item.price}"></td>
+                                    <td th:text="${item.stockQuantity}"></td>
+                                    <td><a href="#" th:href="@{/items/{id}/edit (id=${item.itemId})}" class="btn btn-info" role="button">수정</a></td>
+                                    <br/>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"/>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
