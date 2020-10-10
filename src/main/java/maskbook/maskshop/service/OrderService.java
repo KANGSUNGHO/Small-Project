@@ -4,9 +4,12 @@ import lombok.RequiredArgsConstructor;
 import maskbook.maskshop.domain.*;
 import maskbook.maskshop.domain.item.Item;
 import maskbook.maskshop.repository.OrderRepository;
+import maskbook.maskshop.repository.OrderSearch;
 import maskbook.maskshop.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -51,5 +54,14 @@ public class OrderService {
         // 주문 취소
         order.cancel();
     }
+
+    /**
+     * 주문 검색
+     */
+
+    public List<Order> findOrders(OrderSearch orderSearch){
+        return orderRepository.findAllByString(orderSearch);
+    }
+
 
 }

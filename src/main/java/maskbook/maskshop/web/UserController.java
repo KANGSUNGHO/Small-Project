@@ -31,7 +31,7 @@ public class UserController {
     public String create(@Valid UserForm form, BindingResult result){
 
         if(result.hasErrors()){
-            return "users/createForm";
+            return "users/createUserForm";
         }
 
         Address address = new Address(form.getCity(), form.getStreet(), form.getZipcode());

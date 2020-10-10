@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Order {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery; // 배송정보
 
-    private LocalDateTime orderDate; // 주문시간
+    private String orderDate; // 주문시간
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status; // 주문 상태, ENUM [ORDER, CANCEL]
@@ -59,7 +60,7 @@ public class Order {
             order.addOrderItem(orderItem);
         }
         order.setStatus(OrderStatus.ORDER);
-        order.setOrderDate(LocalDateTime.now());
+        order.setOrderDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")));
 
         return order;
     }

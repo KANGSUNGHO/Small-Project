@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<div th:replace="fragments/navbar :: navbar"/>
+
+<section class="page-section about-heading">
+    <div class="container">
+        <div class="about-heading-content">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <br/>
+                    <div class="bg-faded rounded p-5">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-upper">고객님, 상품을 주문해주세요.</span>
+                            <span class="section-heading-lower">상품 주문</span>
+                        </h2>
+
+                        <form role="form" action="/order" method="post">
+
+                            <div class="form-group">
+                                <label for="user">주문회원</label>
+                                <select name="userId" id="user" class="form-control">
+                                    <option value="">회원선택</option>
+                                    <option th:each="user : ${users}"
+                                            th:value="${user.userId}" th:text="${user.userName}"/>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item">상품명</label>
+                                <select name="itemId" id="item" class="form-control">
+                                    <option value="">상품선택</option>
+                                    <option th:each="item : ${items}" th:value="${item.itemId}"
+                                            th:text="${item.itemName}"/>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="count">주문수량</label>
+                                <input type="number" name="count" class="form-control" id="count"
+                                       placeholder="주문 수량을 입력하세요">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-info">주문</button>
+                                <button type="button" onclick="location.href='/orders'" class="btn btn-info">주문 목록</button>
+                            </div>
+                        </form>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"/>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

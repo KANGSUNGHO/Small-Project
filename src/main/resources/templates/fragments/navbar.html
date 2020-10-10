@@ -16,16 +16,41 @@
                         </a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="users/new">Join</a>
+                        <a class="nav-link text-uppercase text-expanded" href="/users/new">Join</a>
                     </li>
                     <li class="nav-item px-lg-4">
                         <a class="nav-link text-uppercase text-expanded" href="/items/new">Products</a>
                     </li>
                     <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="/store">Store</a>
+                        <a class="nav-link text-uppercase text-expanded" href="/order">Store</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
+
+<script>
+    var liSelected = null;
+    var onTabClicked = function(){
+        console.log("들옴");
+        // unselect
+        if(liSelected != null){
+            liSelected.classList.remove('active');
+        }
+
+        // select
+        this.classList('active');
+        liSelected = this;
+    }
+    window.onload = function(){
+        var divNav = document.getElementById("navbarResponsive")[0];
+        var ulTabs = divNav.childNodes[1];
+        var lis = ulTabs.getElementsByTagName("li");
+        console.log(lis);
+        for (var i = 0; i < lis.length; i++){
+            lis[i].onclick = onTabClicked;
+        }
+    }
+</script>
+
