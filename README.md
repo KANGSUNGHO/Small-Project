@@ -3,7 +3,8 @@
 
 ## :baby_chick: Languages & Frameworks 
 - JAVA 11, SpringBoot 2.1.17, IntelliJ IDEA 2020.2.2
-- 로컬 DB : h2
+- 로컬 DB : MariaDB 2.3.0
+- jsoup 1.11.3, lombok 1.18.12, jpa 2.1.20, thymeleaf 3.0.11
 
 ## :penguin: Environment
 - macOS Catalina 10.15.5

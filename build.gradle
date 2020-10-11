@@ -6,7 +6,7 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
-ext["h2.version"] = "1.4.200"
+//ext["h2.version"] = "1.4.200"
 ext["hibernate.version"] = "5.4.20.Final"
 
 group = 'maskbook'
@@ -34,7 +34,8 @@ dependencies {
 	compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
 
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
+//	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
