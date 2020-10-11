@@ -19,4 +19,44 @@
     <link href="/css/business-casual.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        var liSelected = null;
+        var onTabClicked = function () {
+            console.log("들옴");
+            // unselect
+            if (liSelected != null) {
+                liSelected.classList.remove('active');
+            }
+
+            // select
+           /* const hasClass = this.classList.contains('active');
+            console.log('hasClass' + hasClass);
+            if(hasClass){
+                this.classList.remove('active');
+            } else {
+                this.classList.add('active');
+            }*/
+
+            this.classList.add('active');
+            console.log(this);
+            liSelected = this;
+        }
+
+        window.onload = function () {
+         console.log('start');
+         var divNav = document.getElementById('navbarResponsive');
+         console.log('divNav: ' + divNav)
+         var ulTabs = divNav.childNodes[1];
+         var lis = ulTabs.getElementsByTagName('li');
+         console.log('lis: ' + lis);
+         console.log('lis.length: ' + lis.length);
+         for (var i = 0; i < lis.length; i++) {
+             lis[i].onclick = onTabClicked;
+         }
+     }
+    </script>
 </head>

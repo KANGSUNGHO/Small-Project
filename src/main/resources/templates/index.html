@@ -2,61 +2,100 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/header :: header">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 
 <body>
 
-  <div th:replace="fragments/bodyHeader :: bodyHeader" />
-  <div th:replace="fragments/navbar :: navbar" />
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<div th:replace="fragments/navbar :: navbar"/>
 
 
-  <section class="page-section clearfix">
+<section class="page-section clearfix">
     <div class="container">
-      <div class="intro">
-        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="img/intro.jpg" alt="">
-        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-          <h2 class="section-heading mb-4">
-            <span class="section-heading-upper">COVID-19</span>
-            <span class="section-heading-lower">코로나 힘내세요</span>
-          </h2>
-          <p class="mb-3">코로나 확진자의 수가 끊임없이 나오고 있습니다. <br>거리두기를 생활화 해주세요.!!!
-          </p>
-          <div class="intro-button mx-auto">
-            <a class="btn btn-danger btn-xl" href="https://coronaboard.kr/" target="_blank">코로나보드 바로가기</a>
-          </div>
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="img/intro.jpg" alt="">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">COVID-19</span>
+                    <span class="section-heading-lower">코로나 힘내세요</span>
+                </h2>
+                <p class="mb-3">코로나 확진자의 수가 끊임없이 나오고 있습니다. <br>거리두기를 생활화 해주세요.!!!
+                </p>
+                <div class="intro-button mx-auto">
+<!--                    <a class="btn btn-danger btn-xl" href="https://coronaboard.kr/" target="_blank">코로나보드 바로가기</a>-->
+                    <a class="btn btn-danger btn-xl" href="/coronaboard">코로나보드 바로가기</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
-
-  <section class="page-section cta">
+</section>
+<br/>
+<section class="page-section about-heading">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-9 mx-auto">
-          <div class="cta-inner text-center rounded">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper text-danger">지켜주세요</span>
-              <span class="section-heading-lower">국민 예방 수칙</span>
-            </h2>
-            <ul style="list-style: none; text-align: center">
-              <li>흐르는 물에 비누로 꼼꼼하게 손씻기</li>
-              <li>기침이나 재채기할 때 옷소매로 입과 코 가리기</li>
-              <li>씻지 않은 손으로 눈·코·입 만지지 않기</li>
-              <li>발열, 호흡기 증상자와의 접촉 피하기</li>
-              <li>의료기관 방문 시 마스크 착용하기</li>
-              <li>사람 많은 곳 방문 자제하기</li>
-            </ul>
-          </div>
+        <div class="about-heading-content">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <div class="bg-faded rounded p-5">
+                        <div>
+                            <h2 class="text-center">실시간 상황판</h2>
+                            <table class="table table-hover table-striped" th:style="'text-align:center;'">
+                                <thead>
+                                <tr th:style="'background-color:AntiqueWhite;'">
+                                    <th>#</th>
+                                    <th>확진자</th>
+                                    <th>격리중</th>
+                                    <th>격리해제</th>
+                                    <th>사망자</th>
+                                    <th>발생률</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td th:text="${corona.cityName}"></td>
+                                    <td th:text="${corona.confirmedPersion} + ' (+' + ${corona.yesterdayTodayDiff} + ')'"
+                                        th:style="${corona.yesterdayTodayDiff} != 0 ? 'color: red; text-align:center;' : 'color: black; text-align:center;'"></td>
+                                    <td th:text="${corona.underTreatment}"></td>
+                                    <td th:text="${corona.treatementRelease}"></td>
+                                    <td th:text="${corona.diedPersion}"></td>
+                                    <td th:text="${corona.coronaRatio} + ' %'"></td>
+                                    <br/>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <footer th:replace="fragments/footer :: footer" />
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner text-center rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper text-danger">지켜주세요</span>
+                        <span class="section-heading-lower">국민 예방 수칙</span>
+                    </h2>
+                    <ul style="list-style: none; text-align: center">
+                        <li>흐르는 물에 비누로 꼼꼼하게 손씻기</li>
+                        <li>기침이나 재채기할 때 옷소매로 입과 코 가리기</li>
+                        <li>씻지 않은 손으로 눈·코·입 만지지 않기</li>
+                        <li>발열, 호흡기 증상자와의 접촉 피하기</li>
+                        <li>의료기관 방문 시 마스크 착용하기</li>
+                        <li>사람 많은 곳 방문 자제하기</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"/>
+
 
 </body>
 

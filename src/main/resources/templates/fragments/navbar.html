@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <div th:fragment="navbar">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
@@ -10,7 +11,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item active px-lg-4">
+                    <li class="nav-item px-lg-4">
                         <a class="nav-link text-uppercase text-expanded" href="/">Home
                             <span class="sr-only">(current)</span>
                         </a>
@@ -30,27 +31,6 @@
     </nav>
 </div>
 
-<script>
-    var liSelected = null;
-    var onTabClicked = function(){
-        console.log("들옴");
-        // unselect
-        if(liSelected != null){
-            liSelected.classList.remove('active');
-        }
 
-        // select
-        this.classList('active');
-        liSelected = this;
-    }
-    window.onload = function(){
-        var divNav = document.getElementById("navbarResponsive")[0];
-        var ulTabs = divNav.childNodes[1];
-        var lis = ulTabs.getElementsByTagName("li");
-        console.log(lis);
-        for (var i = 0; i < lis.length; i++){
-            lis[i].onclick = onTabClicked;
-        }
-    }
-</script>
+
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<div th:replace="fragments/navbar :: navbar"/>
+<br/>
+<section class="page-section about-heading">
+    <div class="container">
+        <div class="about-heading-content">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <div class="bg-faded rounded p-5">
+                        <div>
+                            <table class="table table-hover table-striped" th:style="'text-align:center;'">
+                                <thead>
+                                <tr th:style="'background-color:AntiqueWhite;'">
+                                    <th>시도명</th>
+                                    <th>전일대비확진자증감</th>
+                                    <th>확진자</th>
+                                    <th>격리중</th>
+                                    <th>격리해제</th>
+                                    <th>사망자</th>
+                                    <th>발생률</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="corona : ${coronas}" th:style="${corona.cityName} == '합계' ? 'font-weight:bold; background-color:yellow;': 'font-weight:normal;'">
+                                    <td th:text="${corona.cityName}"></td>
+                                    <td th:text="${corona.yesterdayTodayDiff} != 0 ? '+' + ${corona.yesterdayTodayDiff} : 0"
+                                        th:style="${corona.yesterdayTodayDiff} != 0 ? 'color: red;' : 'color: black;'"></td>
+                                    <td th:text="${corona.confirmedPersion}"></td>
+                                    <td th:text="${corona.underTreatment}"></td>
+                                    <td th:text="${corona.treatementRelease}"></td>
+                                    <td th:text="${corona.diedPersion}"></td>
+                                    <td th:text="${corona.coronaRatio}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"/>
+
+<!--&lt;!&ndash; Bootstrap core JavaScript &ndash;&gt;-->
+<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+
+</body>
+
+</html>

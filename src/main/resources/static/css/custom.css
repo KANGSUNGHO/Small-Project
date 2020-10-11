@@ -13,10 +13,15 @@ body {
 #mainNav .navbar-brand {
     color: white;
 }
+#mainNav .navbar-nav .nav-item .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 800;
+}
 
 #mainNav .navbar-nav .nav-item.active .nav-link {
     color: white;
 }
+
 @media (min-width: 992px) {
     #mainNav .navbar-nav .nav-item .nav-link {
         font-size: 0.9rem;
