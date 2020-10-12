@@ -47,7 +47,7 @@ public class OrderRepository {
             } else {
                 jpql += " and";
             }
-            jpql += " u.name like :name";
+            jpql += " u.userName like :name";
         }
 
         TypedQuery<Order> query = em.createQuery(jpql, Order.class)
@@ -57,9 +57,11 @@ public class OrderRepository {
             query = query.setParameter("status", orderSearch.getOrderStatus());
         }
 
+
         if(StringUtils.hasText(orderSearch.getUserName())){
             query = query.setParameter("name", orderSearch.getUserName());
         }
+
 
         return query.getResultList();
 
