@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<div th:replace="fragments/navbar :: navbar"/>
+
+<section class="page-section about-heading">
+    <div class="container">
+        <div class="about-heading-content">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <br/>
+                    <div class="bg-faded rounded p-5">
+                        <br/>
+                        <table class="table table-hover text-center" th:style="'text-align:center;'">
+                            <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>작성자</th>
+                                <th>제목</th>
+                                <th>작성일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="board : ${boards}">
+                                <td th:text="${board.boardId}"></td>
+                                <td th:text="${board.boardUser.userName}"></td>
+                                <<td th:text="${board.title}"></td>
+                                <td th:text="${board.insertDate}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"/>
+
+<!--&lt;!&ndash; Bootstrap core JavaScript &ndash;&gt;-->
+<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+
+</body>
+
+</html>

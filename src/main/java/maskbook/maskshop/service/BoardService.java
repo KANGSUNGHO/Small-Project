@@ -19,10 +19,10 @@ public class BoardService {
     private final UserRepository userRepository;
 
     @Transactional
-    public Long saveBoard(Long userId, String content){
+    public Long saveBoard(Long userId, String content, String title){
         User user = userRepository.findOne(userId);
 
-        Board board = Board.writeBoard(user,content);
+        Board board = Board.writeBoard(user,content,title);
 
         boardRepository.save(board);
         return board.getBoardId();

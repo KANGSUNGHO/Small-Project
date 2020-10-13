@@ -17,16 +17,18 @@ public class Board {
 
     @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User board_user; // 작성자
+    private User boardUser; // 작성자
 
+    private String title; // 제목
     private String content; // 내용
 
     private String insertDate; // 작성 날짜
 
-    public static Board writeBoard(User user, String content){
+    public static Board writeBoard(User user, String content, String title){
         Board board = new Board();
-        board.setBoard_user(user);
+        board.setBoardUser(user);
         board.setContent(content);
+        board.setTitle(title);
         board.setInsertDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHH:mm:ss")));
 
         return board;

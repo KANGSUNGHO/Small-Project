@@ -23,7 +23,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "board_user")
+    @OneToMany(mappedBy = "boardUser")
     private List<Board> boards = new ArrayList<>();
 
 }
