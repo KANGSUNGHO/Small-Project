@@ -19,25 +19,27 @@
                     <div class="bg-faded rounded p-5">
                         <br/>
                         <table class="table table-hover text-center" th:style="'text-align:center;'">
-                            <thead>
                             <tr>
-                                <th>번호</th>
                                 <th>작성자</th>
-                                <th>제목</th>
+                                <td th:text="${infoBoard.boardUser.userName}"></td>
                                 <th>작성일</th>
+                                <td th:text="${infoBoard.insertDate}"></td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="board : ${boards}">
-                                <td th:text="${board.boardId}"></td>
-                                <td th:text="${board.boardUser.userName}"></td>
-                                <td><a href="#" th:href="@{/boards/{id}/read (id=${board.boardId})}" th:style="'text-decoration:none; color:#000000;'"><span th:text="${board.title}"></span></a></td>
-                                <td th:text="${board.insertDate}"></td>
+                            <tr>
+                                <th class="label" colspan="3">제목</th>
+                                <td th:text="${infoBoard.title}"></td>
                             </tr>
-                            </tbody>
+                            <tr>
+                                <th class="label">내용</th>
+                                <td>
+                                    <div class="view-content">
+                                        <p th:text="${infoBoard.content}"></p>
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
                         <div class="text-center">
-                            <button type="button" onclick="location.href='/board'" class="btn btn-info">글작성</button>
+                            <button type="button" onclick="location.href='/boards'" class="btn btn-info">글목록</button>
                         </div>
                     </div>
                 </div>

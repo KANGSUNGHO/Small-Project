@@ -8,6 +8,7 @@ import maskbook.maskshop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -43,6 +44,14 @@ public class BoardController {
         model.addAttribute("boards", boards);
 
         return "boards/boardList";
+    }
+
+    @GetMapping("/boards/{id}/read")
+    public String infoBoard(@PathVariable("id") Long boardId, Model model){
+        Board infoBoard = boardService.findBoard(boardId);
+        model.addAttribute("infoBoard",infoBoard);
+
+        return "boards/infoForm";
     }
 
 
