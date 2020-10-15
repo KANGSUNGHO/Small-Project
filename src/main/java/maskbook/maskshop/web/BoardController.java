@@ -76,19 +76,24 @@ public class BoardController {
         editBoard.setTitle(findBoard.getTitle());
         editBoard.setContent(findBoard.getContent());
         editBoard.setInsertDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd HH:mm:ss")));
-        System.out.println("editBoard.getInsertDate1 : " + editBoard.getInsertDate());
         model.addAttribute("editBoard", editBoard);
         return "boards/updateBoardForm";
     }
 
     @PostMapping(value="/boards/{boardId}/edit")
     public String editBoard(@ModelAttribute("editBoard") Board editBoard){
-        System.out.println("들어옴2");
 
         boardService.updateForm(editBoard.getBoardId(),editBoard.getTitle(),editBoard.getContent(), editBoard.getInsertDate());
-        System.out.println("editBoard.getInsertDate()2 : " + editBoard.getInsertDate());
         return "redirect:/boards";
     }
 
+    @GetMapping(value="/boards/{boardId}/cancel")
+    public String cancelBoard(@PathVariable("boardId") Long boardId){
+
+        Board cancelBoard = boardService.findBoard(boardId);
+        boardService.deleteBoard(cancelBoard);
+
+        return "redirect:/boards";
+    }
 
 }

@@ -46,5 +46,10 @@ public class BoardService {
         updateBoard.setInsertDate(updateDate);
     }
 
+    @Transactional
+    public void deleteBoard(Board board){
+        boardRepository.deleteOne(board);
+    }
+
 
 }

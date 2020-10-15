@@ -28,4 +28,8 @@ public class BoardRepository {
        return em.createQuery("select b from Board b", Board.class)
                .getResultList();
     }
+
+    public void deleteOne(Board board) {
+        em.remove(board);
+    }
 }
