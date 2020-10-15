@@ -1,10 +1,13 @@
 package maskbook.maskshop.repository;
 
 import maskbook.maskshop.domain.Board;
+import maskbook.maskshop.domain.Order;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -22,7 +25,7 @@ public class BoardRepository {
     }
 
     public List<Board> findAll(){
-        return em.createQuery("select b from Board b", Board.class)
-                .getResultList();
+       return em.createQuery("select b from Board b", Board.class)
+               .getResultList();
     }
 }

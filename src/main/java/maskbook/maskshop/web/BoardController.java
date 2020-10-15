@@ -7,11 +7,11 @@ import maskbook.maskshop.service.BoardService;
 import maskbook.maskshop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -41,17 +41,53 @@ public class BoardController {
     @GetMapping(value="/boards")
     public String boardList(Model model){
         List<Board> boards = boardService.findBoards();
+        Collections.reverse(boards); // 리스트 역순 정렬
+
         model.addAttribute("boards", boards);
 
         return "boards/boardList";
     }
 
-    @GetMapping("/boards/{id}/read")
+    @GetMapping(value="/boards/{id}/read")
     public String infoBoard(@PathVariable("id") Long boardId, Model model){
         Board infoBoard = boardService.findBoard(boardId);
+        String[] contents;
+        String findContent = infoBoard.getContent();
+        contents = findContent.split("\n"); // content 개행
+
+//        infoBoard.setContent(infoBoard.getContent().replaceAll("\\n", "<br/>"));
+
+
+        model.addAttribute("contents", contents);
         model.addAttribute("infoBoard",infoBoard);
 
+
         return "boards/infoForm";
+    }
+
+    @GetMapping(value="/boards/{boardId}/edit")
+    public String editBoardForm(@PathVariable("boardId") Long boardId, Model model){
+        Board findBoard = boardService.findBoard(boardId);
+
+        Board editBoard = new Board();
+
+        editBoard.setBoardId(findBoard.getBoardId());
+        editBoard.setBoardUser(findBoard.getBoardUser());
+        editBoard.setTitle(findBoard.getTitle());
+        editBoard.setContent(findBoard.getContent());
+        editBoard.setInsertDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd HH:mm:ss")));
+        System.out.println("editBoard.getInsertDate1 : " + editBoard.getInsertDate());
+        model.addAttribute("editBoard", editBoard);
+        return "boards/updateBoardForm";
+    }
+
+    @PostMapping(value="/boards/{boardId}/edit")
+    public String editBoard(@ModelAttribute("editBoard") Board editBoard){
+        System.out.println("들어옴2");
+
+        boardService.updateForm(editBoard.getBoardId(),editBoard.getTitle(),editBoard.getContent(), editBoard.getInsertDate());
+        System.out.println("editBoard.getInsertDate()2 : " + editBoard.getInsertDate());
+        return "redirect:/boards";
     }
 
 

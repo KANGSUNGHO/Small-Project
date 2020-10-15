@@ -29,7 +29,7 @@ public class Board {
         board.setBoardUser(user);
         board.setContent(content);
         board.setTitle(title);
-        board.setInsertDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHH:mm:ss")));
+        board.setInsertDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd HH:mm:ss")));
 
         return board;
     }

@@ -8,6 +8,7 @@ import maskbook.maskshop.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,6 +25,7 @@ public class BoardService {
 
         Board board = Board.writeBoard(user,content,title);
 
+
         boardRepository.save(board);
         return board.getBoardId();
     }
@@ -34,6 +36,14 @@ public class BoardService {
 
     public List<Board> findBoards(){
         return boardRepository.findAll();
+    }
+
+    @Transactional
+    public void updateForm(Long id, String title, String content, String updateDate){
+        Board updateBoard = boardRepository.findOne(id);
+        updateBoard.setTitle(title);
+        updateBoard.setContent(content);
+        updateBoard.setInsertDate(updateDate);
     }
 
 
