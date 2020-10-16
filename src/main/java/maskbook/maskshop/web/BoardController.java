@@ -3,6 +3,7 @@ package maskbook.maskshop.web;
 import lombok.RequiredArgsConstructor;
 import maskbook.maskshop.domain.Board;
 import maskbook.maskshop.domain.User;
+import maskbook.maskshop.repository.BoardSearch;
 import maskbook.maskshop.service.BoardService;
 import maskbook.maskshop.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -39,8 +40,8 @@ public class BoardController {
 
     }
     @GetMapping(value="/boards")
-    public String boardList(Model model){
-        List<Board> boards = boardService.findBoards();
+    public String boardList(@ModelAttribute("boardSearch") BoardSearch boardSearch, Model model){
+        List<Board> boards = boardService.findBoards(boardSearch);
         Collections.reverse(boards); // 리스트 역순 정렬
 
         model.addAttribute("boards", boards);

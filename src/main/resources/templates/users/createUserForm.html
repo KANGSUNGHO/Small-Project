@@ -3,6 +3,8 @@
 
 <head th:replace="fragments/header :: header">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/reojs/addressapi.js"></script>
 </head>
 <style>
     .fieldError {
@@ -50,6 +52,7 @@
                                 <label th:for="zipcode">우편번호</label>
                                 <input type="text" th:field="*{zipcode}" class="form-control" placeholder="우편번호를 입력하세요">
                             </div>
+
                             <div class="text-center">
                                 <button type="submit" class="btn btn-info ">회원가입</button>
                                 <button type="button" onclick="location.href='/users'" class="btn btn-info">회원조회</button>

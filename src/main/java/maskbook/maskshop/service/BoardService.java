@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import maskbook.maskshop.domain.Board;
 import maskbook.maskshop.domain.User;
 import maskbook.maskshop.repository.BoardRepository;
+import maskbook.maskshop.repository.BoardSearch;
 import maskbook.maskshop.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +35,8 @@ public class BoardService {
         return boardRepository.findOne(boardId);
     }
 
-    public List<Board> findBoards(){
-        return boardRepository.findAll();
+    public List<Board> findBoards(BoardSearch boardSearch){
+        return boardRepository.findBoardAllByString(boardSearch);
     }
 
     @Transactional
