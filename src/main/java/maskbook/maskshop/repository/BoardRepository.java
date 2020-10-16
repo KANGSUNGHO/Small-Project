@@ -30,37 +30,33 @@ public class BoardRepository {
         Boolean isFirstCondition = true;
 
         // 글 이름 검색
-        if(StringUtils.hasText(boardSearch.getTitle())){
-            if(isFirstCondition){
-                jpql += " where";
-                isFirstCondition = false;
-            } else{
-                jpql += " and";
+        if(boardSearch.getSearchOption() != null){
+            if(boardSearch.getSearchOption().equals("title")){
+                jpql += " where b.title like :title";
+            } else if(boardSearch.getSearchOption().equals("userName")){
+                jpql += " where u.userName like :userName";
             }
-            jpql += " b.title like :title";
+        }else {
+            isFirstCondition = false;
         }
 
-        if(StringUtils.hasText(boardSearch.getUserName())){
-            if(isFirstCondition){
-                jpql += " where";
-                isFirstCondition = false;
-            } else{
-                jpql += " and";
-            }
-            jpql += " u.userName like :userName";
-        }
         TypedQuery query = em.createQuery(jpql,Board.class);
 
-        if(StringUtils.hasText(boardSearch.getTitle())){
-            query = query.setParameter("title", boardSearch.getTitle());
+
+        if(boardSearch.getSearchOption() != null){
+            if(boardSearch.getSearchOption() != null){
+                if(boardSearch.getSearchOption().equals("title")){
+                    query = query.setParameter("title", boardSearch.getSearch());
+                } else if(boardSearch.getSearchOption().equals("userName")){
+                    query = query.setParameter("userName", boardSearch.getSearch());
+                }
+            }else {
+                isFirstCondition = false;
+            }
         }
-        if(StringUtils.hasText(boardSearch.getUserName())){
-            query = query.setParameter("userName", boardSearch.getUserName());
-        }
+
         return query.getResultList();
 
-//       return em.createQuery("select b from Board b", Board.class)
-//               .getResultList();
     }
 
     public void deleteOne(Board board) {

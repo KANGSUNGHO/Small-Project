@@ -44,6 +44,9 @@ public class BoardController {
         List<Board> boards = boardService.findBoards(boardSearch);
         Collections.reverse(boards); // 리스트 역순 정렬
 
+        System.out.println("boardSearch.getSearchOption() : " + boardSearch.getSearchOption());
+        System.out.println("boardSearch.getSearch() : " + boardSearch.getSearch());
+
         model.addAttribute("boards", boards);
 
         return "boards/boardList";
