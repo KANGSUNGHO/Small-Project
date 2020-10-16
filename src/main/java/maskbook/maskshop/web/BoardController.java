@@ -72,7 +72,7 @@ public class BoardController {
         Board editBoard = new Board();
 
         editBoard.setBoardId(findBoard.getBoardId());
-        editBoard.setBoardUser(findBoard.getBoardUser());
+        editBoard.changeBoardUser(findBoard.getBoardUser());
         editBoard.setTitle(findBoard.getTitle());
         editBoard.setContent(findBoard.getContent());
         editBoard.setInsertDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy MM dd HH:mm:ss")));

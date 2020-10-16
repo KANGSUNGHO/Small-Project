@@ -24,6 +24,14 @@ public class Board {
 
     private String insertDate; // 작성 날짜
 
+    public void changeBoardUser(User boardUser){ // 연관관계 편의 메서드
+        this.boardUser = boardUser;
+        boardUser.getBoards().add(this); // this는 현재 클래스 Board임
+    }
+    /*  changeBoardUser(User boardUser) 메소드를 따로 해주는 이유는
+        두 테이블 양쪽에 값을 설정하기 위해
+     */
+
     public static Board writeBoard(User user, String content, String title){
         Board board = new Board();
         board.setBoardUser(user);
@@ -33,5 +41,4 @@ public class Board {
 
         return board;
     }
-
 }
