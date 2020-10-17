@@ -40,6 +40,24 @@
                                 </td>
                             </tr>
                         </table>
+
+                        <table class="table table-hover text-center">
+                            <h5>댓글</h5>
+                            <tr colspan="4">
+                                <td colspan="1">
+                                    <input type="text" class="form-control-sm"  placeholder="작성자">
+                                </td>
+                                <td colspan="3" >
+                                    <textarea class="form-control" rows="3" placeholder="댓글을 입력하세요"></textarea>
+                                </td>
+                            </tr>
+                            <tr colspan="4">
+                                <td colspan="2">댓글내용</td>
+                                <td colspan="1">작성자</td>
+                                <td colspan="1">시간</td>
+                            </tr>
+                        </table>
+                        <br>
                         <div class="text-center">
                             <button type="button" onclick="location.href='/boards'" class="btn btn-info">글목록</button>
                             <a href="#" th:href="@{/boards/{boardId}/edit (boardId=${infoBoard.boardId})}" class="btn btn-info" role="button">수정</a>
