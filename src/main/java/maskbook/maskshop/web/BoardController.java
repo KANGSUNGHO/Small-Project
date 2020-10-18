@@ -2,9 +2,11 @@ package maskbook.maskshop.web;
 
 import lombok.RequiredArgsConstructor;
 import maskbook.maskshop.domain.Board;
+import maskbook.maskshop.domain.Reply;
 import maskbook.maskshop.domain.User;
 import maskbook.maskshop.repository.BoardSearch;
 import maskbook.maskshop.service.BoardService;
+import maskbook.maskshop.service.ReplyService;
 import maskbook.maskshop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,7 @@ public class BoardController {
 
     private final BoardService boardService;
     private final UserService userService;
+    private final ReplyService replyService;
 
     @GetMapping(value="/board")
     public String insertForm(Model model){
@@ -61,7 +64,11 @@ public class BoardController {
 
 //        infoBoard.setContent(infoBoard.getContent().replaceAll("\\n", "<br/>"));
 
+        List<Reply> findReplys = replyService.findReplys(boardId); // 댓글 목록 가져오기
+        int count = findReplys.size(); // 댓글 개수
 
+        model.addAttribute("findReplys", findReplys);
+        model.addAttribute("count", count);
         model.addAttribute("contents", contents);
         model.addAttribute("infoBoard",infoBoard);
 

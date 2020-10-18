@@ -41,7 +41,7 @@
                             </tr>
                         </table>
 
-                        댓글 <h5 th:text="${count}"></h5>
+                        <h5>댓글 0</h5>
                         <div class="text-right">
                             <form role="form" th:action="@{/reply/{boardId} (boardId=${infoBoard.boardId})}" method="post">
                                 <input type="text" id="replyUser" name="replyUser" class="form-control-sm mb-2"  placeholder="작성자">
@@ -50,11 +50,12 @@
                             </form>
                         </div>
                         <table class="table table-hover text-center">
-                            <tr th:each="findReply : ${findReplys}"colspan="4">
+                            <tr th:each="findReply : ${findReplys}" colspan="4">
                                 <td th:text="${findReply.replyContent}" colspan="2">댓글내용</td>
                                 <td th:text="${findReply.replyUserName}" colspan="1">작성자</td>
                                 <td th:text="${findReply.insertDate}"colspan="1">시간</td>
                             </tr>
+
                         </table>
                         <br>
                         <div class="text-center">

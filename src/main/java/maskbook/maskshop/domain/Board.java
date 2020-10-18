@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -18,6 +20,9 @@ public class Board {
     @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User boardUser; // 작성자
+
+    @OneToMany(mappedBy = "board")
+    private List<Reply> replys = new ArrayList<>();
 
     private String title; // 제목
     private String content; // 내용
