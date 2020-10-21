@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="bookmarkHeader">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>maskShop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/business-casual.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/bookmark.css" rel="stylesheet">
+
+    <!-- google fonts   -->
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        var liSelected = null;
+        var onTabClicked = function () {
+            console.log("들옴");
+            // unselect
+            if (liSelected != null) {
+                liSelected.classList.remove('active');
+            }
+
+            // select
+            /* const hasClass = this.classList.contains('active');
+             console.log('hasClass' + hasClass);
+             if(hasClass){
+                 this.classList.remove('active');
+             } else {
+                 this.classList.add('active');
+             }*/
+
+            this.classList.add('active');
+            console.log(this);
+            liSelected = this;
+        }
+
+        window.onload = function () {
+            console.log('start');
+            var divNav = document.getElementById('navbarResponsive');
+            console.log('divNav: ' + divNav)
+            var ulTabs = divNav.childNodes[1];
+            var lis = ulTabs.getElementsByTagName('li');
+            console.log('lis: ' + lis);
+            console.log('lis.length: ' + lis.length);
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].onclick = onTabClicked;
+            }
+        }
+        function openBox(){
+            if($("#post-box").css("display") == "none"){
+                $("#post-box").show()
+                $("#open_button").text("포스팅 박스 닫기")
+            } else{
+                $("#post-box").hide()
+                $("#open_button").text("포스팅 박스 열기")
+            }
+        }
+    </script>
+</head>
