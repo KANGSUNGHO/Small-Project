@@ -13,62 +13,64 @@
 <div th:replace="fragments/bodyHeader :: bodyHeader"/>
 <div th:replace="fragments/navbar :: navbar"/>
 <section class="page-section about-heading">
-    <div class="wrap mx-auto" id="blog">
-        <div class="content jumbotron text-center font-weight-bolder bg-faded">
-            <H2 class="display-4">코로나 북마크</H2>
-            <h5 class="lead">
-                코로나와 관련된 뉴스 및 정보들을 저장하는 곳입니다.
-            </h5>
-            <hr class="my-4">
-            <p class="lead">
-                관심있는 url을 가져다가 포스팅 해보세요!!
-            </p>
-            <p class="lead">
-                <a class="btn btn-info btn-lg" role="button" id="open_button" onclick="openBox()">포스팅 박스 열기</a>
-            </p>
-        </div>
-        <div class="form-post jumbotron bg-faded" id="post-box">
-            <form role="form" action="bookmark/bookmarklist" method="post">
-                <div class="form-group">
-                    <label for="postUrl">아티클 URL</label>
-                    <input class="form-control" id="postUrl" name="postUrl" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="postComment">간단 코멘트</label>
-                    <textarea class="form-control" id="postComment" name="postComment" rows="2"></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-info">기사저장</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="card-columns text-center jumbotron bg-faded font-italic" th:if="${bmMeta != null}" id="card-box">
-            <div class="card border-info" th:each="bm : ${bmMeta}">
-                <img class="card-img-top" th:src="${bm.image}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${bm.title}"></h5>
-                    <p class="card-body" th:text="${bm.description}"></p>
-                </div>
-                <div class="card-body">
-                    <p class="card-body" th:style="'color:skyblue;'" th:text="${bm.userComment}"></p>
-                </div>
-                <a href="#" th:href="@{/bookmark/{bmtId}/cancel (bmtId=${bm.bmtId})}" class="btn btn-danger mb-1" role="button">삭제</a>
+    <div class="container">
+        <div class="wrap mx-auto" id="blog">
+            <div class="content jumbotron text-center font-weight-bolder bg-faded">
+                <H2 class="display-4">코로나 북마크</H2>
+                <h5 class="lead">
+                    코로나와 관련된 뉴스 및 정보들을 저장하는 곳입니다.
+                </h5>
+                <hr class="my-4">
+                <p class="lead">
+                    관심있는 url을 가져다가 포스팅 해보세요!!
+                </p>
+                <p class="lead">
+                    <a class="btn btn-info btn-lg" role="button" id="open_button" onclick="openBox()">포스팅 박스 열기</a>
+                </p>
             </div>
-        </div>
-        <div class="card-columns text-center jumbotron bg-faded font-italic" th:unless="${bmMeta != null}" id="card-box">
-            <div class="card border-primary bg-primary">
-                <img class="card-img-top" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        안녕 난 타이틀이야
-                    </h5>
-                    <p class="card-body">
-                        안녕 난 내용이야
-                    </p>
+            <div class="form-post jumbotron bg-faded" id="post-box">
+                <form role="form" action="bookmark/bookmarklist" method="post">
+                    <div class="form-group">
+                        <label for="postUrl">아티클 URL</label>
+                        <input class="form-control" id="postUrl" name="postUrl" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="postComment">간단 코멘트</label>
+                        <textarea class="form-control" id="postComment" name="postComment" rows="2"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info">기사저장</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-columns text-center jumbotron bg-faded font-italic" th:if="${bmMeta != null}" id="card-box">
+                <div class="card border-info" th:each="bm : ${bmMeta}">
+                    <img class="card-img-top" th:src="${bm.image}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${bm.title}"></h5>
+                        <p class="card-body" th:text="${bm.description}"></p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-body" th:style="'color:skyblue;'" th:text="${bm.userComment}"></p>
+                    </div>
+                    <a href="#" th:href="@{/bookmark/{bmtId}/cancel (bmtId=${bm.bmtId})}" class="btn btn-danger mb-1" role="button">삭제</a>
+                </div>
+            </div>
+            <div class="card-columns text-center jumbotron bg-faded font-italic" th:unless="${bmMeta != null}" id="card-box">
+                <div class="card border-primary bg-primary">
+                    <img class="card-img-top" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            안녕 난 타이틀이야
+                        </h5>
+                        <p class="card-body">
+                            안녕 난 내용이야
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </section>
+</section>
 </body>

@@ -15,6 +15,7 @@
         <div class="about-heading-content">
             <div class="row">
                 <div class="col-xl-9 col-lg-10 mx-auto">
+                    <br/>
                     <div class="bg-faded rounded p-5">
                         <div>
                             <table class="table table-striped" th:style="'text-align:center;'">
@@ -34,7 +35,6 @@
                                     <td th:text="${item.price}"></td>
                                     <td th:text="${item.stockQuantity}"></td>
                                     <td><a href="#" th:href="@{/items/{id}/edit (id=${item.itemId})}" class="btn btn-info" role="button">수정</a></td>
-                                    <br/>
                                 </tr>
                                 </tbody>
                             </table>
