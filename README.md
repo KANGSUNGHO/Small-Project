@@ -1,7 +1,8 @@
 ## :wolf: Contents
-- 메인 화면
+- 메인화면 1
 <img width="1792" alt="main01" src="https://user-images.githubusercontent.com/48710171/97449646-3d956100-1975-11eb-82ba-42528ff7fba9.png">
-
+- 메인화면 2
+<img width="1792" alt="main02" src="https://user-images.githubusercontent.com/48710171/97590207-bb26a300-1a41-11eb-9e00-b7699c32579a.png">
 ## :dromedary_camel: Developer
 - [강성호](https://github.com/KANGSUNGHO)
 
