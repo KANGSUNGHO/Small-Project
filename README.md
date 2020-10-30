@@ -1,8 +1,13 @@
 ## :wolf: Contents
 - 메인화면 1
-<img width="1792" alt="main01" src="https://user-images.githubusercontent.com/48710171/97449646-3d956100-1975-11eb-82ba-42528ff7fba9.png">
+<img width="500" alt="main01" src="https://user-images.githubusercontent.com/48710171/97449646-3d956100-1975-11eb-82ba-42528ff7fba9.png">
+
 - 메인화면 2
-<img width="1792" alt="main02" src="https://user-images.githubusercontent.com/48710171/97590207-bb26a300-1a41-11eb-9e00-b7699c32579a.png">
+<img width="500" alt="main02" src="https://user-images.githubusercontent.com/48710171/97590207-bb26a300-1a41-11eb-9e00-b7699c32579a.png">
+
+- 코로나보드
+<img width="500" alt="스크린샷 2020-10-28 오후 11 08 23" src="https://user-images.githubusercontent.com/48710171/97714625-bc6cd400-1b04-11eb-9b91-7979c53f39ca.png">
+
 ## :dromedary_camel: Developer
 - [강성호](https://github.com/KANGSUNGHO)
 
